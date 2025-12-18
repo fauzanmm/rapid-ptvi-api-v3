@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client"
+  output = "../prisma-main-minecare-database/main-minecare-database-client-types"
+}
+
+datasource db {
+  provider = "sqlserver"
+}
+
+model fuelTimeLoss_1 {
+  RecordId     Int     @id(map: "PK__TruckLos__FBDF78E90F673081") @default(autoincrement())
+  DateYear     Int?
+  DateMonth    String? @db.VarChar(24)
+  OperatorName String? @db.VarChar(40)
+  Crew         String? @db.VarChar(12)
+  Reason       String? @db.VarChar(255)
+  LossFuel     Float?
+  LossTime     Float?
+}
+
+model pitFuelTimeLossShift {
+  RecordId     Int       @id(map: "PK__PITTruck__3213E83FC2FB9FD0") @default(autoincrement())
+  ShiftId      Int?
+  Equipment    String?   @db.VarChar(12)
+  Status       String?   @db.VarChar(12)
+  Reason       String?   @db.VarChar(255)
+  Load         String?   @db.VarChar(64)
+  Location     String?   @db.VarChar(255)
+  UnitLoc      String?   @db.VarChar(64)
+  OperatorName String?   @db.VarChar(40)
+  Crew         String?   @db.VarChar(12)
+  IdFuelRate   Int
+  FuelRate     Float?
+  FuelLoss     Float?
+  TimeFuelRate DateTime? @db.DateTime
+  IdRPM        Int
+  RPM          Float?
+  TimeRPM      DateTime? @db.DateTime
+  RefreshTime  DateTime? @db.DateTime
+}
+
+model pitFuelTimeLossCurrent {
+  RecordId     Int       @id @default(autoincrement())
+  ShiftId      Int?
+  Equipment    String?   @db.VarChar(12)
+  Status       String?   @db.VarChar(12)
+  Reason       String?   @db.VarChar(255)
+  Load         String?   @db.VarChar(64)
+  Location     String?   @db.VarChar(255)
+  UnitLoc      String?   @db.VarChar(64)
+  OperatorName String?   @db.VarChar(40)
+  Crew         String?   @db.VarChar(12)
+  IdFuelRate   Int
+  FuelRate     Float?
+  FuelLoss     Float?
+  TimeFuelRate DateTime? @db.DateTime
+  IdRPM        Int
+  RPM          Float?
+  TimeRPM      DateTime? @db.DateTime
+  RefreshTime  DateTime? @db.DateTime
+}
